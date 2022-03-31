@@ -21,7 +21,7 @@ class Articles
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min=10, max=255, minMessage="Le titre doit comporter au moins {{limit}} caractères")
+     * @Assert\Length(min=10, max=255, minMessage="Le titre doit comporter au moins 10 caractères")
      */
     private $title;
 
