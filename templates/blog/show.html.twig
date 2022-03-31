@@ -2,17 +2,42 @@
 
 {% block body %}
 
-<article>
-    <h2>{{ article.title }}</h2>
-    <div class="metadata">ecrit le {{article.createdAt | date('d/m/Y')}} à {{article.createdAt | date('H:i')}} dans la catégorie Politique</div>
-    <div class="content">
-        <img src="{{article.image}}" alt="">
-        
-        <hr>
-        <p>{{ article.content }}</p>
-    </div>
-</article>
+	<article>
+		<h2>{{ article.title }}</h2>
+		<div class="metadata">ecrit le
+			{{article.createdAt | date('d/m/Y')}}
+			à
+			{{article.createdAt | date('H:i')}}
+			dans la catégorie
+			{{article.categories.title}}</div>
+		<div class="content">
+			<img src="{{article.image}}" alt="">
 
+			<hr>
+			<p>{{ article.content }}</p>
+		</div>
+	</article>
+
+	<section id="commentaires">
+		{% for comment in article.comments %}
+			<div class="comment">
+				<div class="row">
+					<div class="col-2">
+						{{comment.author}}
+						(<small>
+
+							{{comment.createdAt | date('d/m/Y à H:i')}}</small>)
+					</div>
+					<div class="col">
+						{{comment.content}}
+					</div>
+
+
+				</div>
+			</div>
+
+		{% endfor %}
+	</section>
 
 
 {% endblock %}

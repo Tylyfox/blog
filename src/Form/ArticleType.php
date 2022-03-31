@@ -3,6 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Articles;
+use App\Entity\Categories;
+use Doctrine\ORM\Mapping\Entity;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,6 +16,10 @@ class ArticleType extends AbstractType
     {
         $builder
             ->add('title')
+            ->add('categories',EntityType::class, [
+                'class' => Categories::class,
+                'choice_label' => "title"
+            ])
             ->add('content')
             ->add('image')
 
